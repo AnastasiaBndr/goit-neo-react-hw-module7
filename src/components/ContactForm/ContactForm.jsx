@@ -1,10 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import { FormSchema } from "../../helpers";
-import { nanoid } from "nanoid";
+
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 
 export default function ContactForm() {
   const nameFieldId = useId();
@@ -18,7 +18,8 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ ...values, id: nanoid() }));
+    const currentDate = new Date();
+    dispatch(addContact({ ...values, createdAt: currentDate.toISOString() }));
     actions.resetForm();
   };
 

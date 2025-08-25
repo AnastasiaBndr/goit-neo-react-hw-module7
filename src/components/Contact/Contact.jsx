@@ -3,8 +3,7 @@ import { getRandomIcon } from "../../helpers";
 import { useDispatch } from "react-redux";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useMemo } from "react";
-import { deleteContact } from "../../redux/contactsSlice";
-
+import { deleteContact } from "../../redux/contactsOps";
 
 export default function Contact({ contact }) {
   const randomIcon = useMemo(() => getRandomIcon(), []);
